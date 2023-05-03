@@ -32,7 +32,6 @@ class _CountryAppState extends State<CountryApp> {
   TextEditingController textEditingController = TextEditingController();
   String searchCountry = "";
   final player = AudioPlayer();
-  String selectCountry = "Malaysia";
   String iso2 = "";
   String capital = "";
   String currencyName = "";
@@ -40,23 +39,6 @@ class _CountryAppState extends State<CountryApp> {
   var gpd = 0.0, sexRatio = 0.0, surfaceArea = 0.0, tourists = 0.0;
   Country curcountry = Country("Not available", "", "Not available", 0.0, false,
       0.0, 0.0, "Not available", 0.0);
-  List<String> countryList = [
-    "Malaysia",
-    "Singapore",
-    "Indonesia",
-    "Brunei",
-    "Saudi Arabia",
-    "United States",
-    "England",
-    "China",
-    "Taiwan",
-    "Brazil",
-    "Argentina",
-    "Spain",
-    "Germany",
-    "France",
-    "Japan"
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +111,7 @@ class _CountryAppState extends State<CountryApp> {
           surfaceArea = parsedJson[0]['surface_area'];
           currencyName = parsedJson[0]['currency']['name'];
           tourists = parsedJson[0]['tourists'];
-          curcountry = Country(selectCountry, iso2, capital, gpd, male,
+          curcountry = Country(searchCountry, iso2, capital, gpd, male,
               sexRatio, surfaceArea, currencyName, tourists);
           player.play(AssetSource('success.wav'));
         });
